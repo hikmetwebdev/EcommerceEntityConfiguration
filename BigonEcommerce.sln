@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BigonEcommerce", "BigonEcommerce\BigonEcommerce.csproj", "{620C5F3F-03D6-47CC-9E37-90379CA9CC28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{620C5F3F-03D6-47CC-9E37-90379CA9CC28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{620C5F3F-03D6-47CC-9E37-90379CA9CC28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{620C5F3F-03D6-47CC-9E37-90379CA9CC28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{620C5F3F-03D6-47CC-9E37-90379CA9CC28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1898027-0112-4B04-852E-9675A98BB13B}
+	EndGlobalSection
+EndGlobal
