@@ -5455,10 +5455,10 @@
             </div>
             <div class="col-md-5">
                 <div class="newsletter-box">
-                    <form action="#">
+                    <form  class="newsForm">
                         <input class="subscribe"
                                placeholder="Enter your email address"
-                               name="email"
+                               name="email" 
                                id="subscribe"
                                type="text" />
                         <button type="submit" class="submit">subscribe</button>
@@ -5469,3 +5469,42 @@
     </div>
 </div>
 <!-- Signup-Newsletter End -->
+
+@section customScripts_js{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let form = $(".newsForm");
+            form.submit((e) => {
+                e.preventDefault();
+                let formData = new FormData(e.target);
+
+                $.ajax({
+                    method: "POST",
+                    url: '@Url.Action("subscribe", "home")',
+                    processData: false,
+                    contentType: false,
+                    data: formData,
+                    success: function (res) {
+                        if(res.success){
+                            console.log(res.message)
+                            toastr.success(res.message, "Ugurlu")
+ 
+                            return;
+                        }
+                          console.log(res.message);
+                        return;
+
+                    },
+                    error: function (err) {
+                        console.error(err)
+                            toastr.error(err.message,"Xeta")
+
+                    }
+                })
+            })
+
+        })
+
+
+    </script>
+}

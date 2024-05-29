@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using BigonEcommerce.Models.Entities.Common;
 
 namespace BigonEcommerce.Models.Entities
 {

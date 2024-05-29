@@ -12,11 +12,13 @@ namespace BigonEcommerce.Models.DataAcces
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration<Color>(new ColorEntityConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BigondbContext).Assembly);
         }
         public DbSet<Color> Colors { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Subscriber> Subscribers { get; set; }
 
 
 

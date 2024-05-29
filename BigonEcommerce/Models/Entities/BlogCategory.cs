@@ -1,4 +1,6 @@
-﻿namespace BigonEcommerce.Models.Entities
+﻿using BigonEcommerce.Models.Entities.Common;
+
+namespace BigonEcommerce.Models.Entities
 {
     public class BlogCategory:BaseEntities<int>
     {

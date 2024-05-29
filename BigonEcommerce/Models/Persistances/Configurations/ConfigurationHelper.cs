@@ -1,4 +1,4 @@
-﻿using BigonEcommerce.Models.Entities;
+﻿using BigonEcommerce.Models.Entities.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

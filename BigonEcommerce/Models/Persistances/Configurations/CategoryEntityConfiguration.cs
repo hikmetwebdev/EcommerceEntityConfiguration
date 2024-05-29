@@ -9,10 +9,16 @@ namespace BigonEcommerce.Models.Persistances.Configurations
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.Property(m => m.Id).HasColumnType("int");
-            builder.Property(m => m.Name).HasColumnType("varchar").HasMaxLength(20).IsRequired();
+            builder.Property(m => m.Name).HasColumnType("varchar").HasMaxLength(50).IsRequired();
 
             builder.ConfigureAsAudutible();
             builder.HasKey(m => m.Id);
+
+            builder.HasOne<Category>()
+                .WithMany()
+                .HasForeignKey(c => c.ParentCategoryId)
+                .OnDelete(DeleteBehavior.NoAction)
+                .HasPrincipalKey(c => c.Id);
         }
     }
 }

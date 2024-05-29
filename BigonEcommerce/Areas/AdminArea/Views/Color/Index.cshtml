@@ -1,0 +1,66 @@
+﻿@model List<Color>
+
+@{
+    var count = 1;
+}
+
+<div class="card">
+    <div class="card-header">
+
+        <h5>Colors</h5>
+        <a asp-controller="color" asp-action="create">
+            <button class="btn btn-success">Add color</button>
+        </a>
+
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@count</td>
+                                <td>@item.Name</td>
+                                <td>
+                                    <span style="background-color:@item.HexCode"></span>
+                                </td>
+                                <td>
+                                    <a class="btn btn-primary" asp-controller="color" asp-action="Detail" asp-route-id="@item.Id">Details</a>
+                                    <a class="btn btn-warning" asp-controller="color" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                                    <a class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="3" class="text-warning">No colors available!</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<style>
+
+    span[color]{
+        display:inline-block;
+        width:30px;
+        height:30px;
+        border-radius:100;
+        border:1px solid #cdcdcd;
+    }
+</style>
