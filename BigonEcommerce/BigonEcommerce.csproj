@@ -432,10 +432,6 @@
     <None Include="wwwroot\Adminfiles\files\assets\pages\dashboard\amchart\js\amcharts.js" />
     <None Include="wwwroot\Adminfiles\files\assets\pages\dashboard\amchart\js\light.js" />
     <None Include="wwwroot\Adminfiles\files\assets\pages\dashboard\amchart\js\serial.js" />
-    <None Include="wwwroot\Adminfiles\files\assets\pages\dashboard\analytic-dashboard.min.js" />
-    <None Include="wwwroot\Adminfiles\files\assets\pages\dashboard\crm-dashboard.min.js" />
-    <None Include="wwwroot\Adminfiles\files\assets\pages\dashboard\custom-dashboard.js" />
-    <None Include="wwwroot\Adminfiles\files\assets\pages\dashboard\custom-dashboard.min.js" />
     <None Include="wwwroot\Adminfiles\files\assets\pages\data-table\extensions\autofill\js\dataTables.autoFill.min.js" />
     <None Include="wwwroot\Adminfiles\files\assets\pages\data-table\extensions\autofill\js\dataTables.select.min.js" />
     <None Include="wwwroot\Adminfiles\files\assets\pages\data-table\extensions\autofill\js\extensions-custom.js" />

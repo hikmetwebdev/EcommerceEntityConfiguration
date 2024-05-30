@@ -2,18 +2,10 @@
 <html lang="en">
 
 
-<!-- Mirrored from demo.dashboardpack.com/adminty-html/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 19 Sep 2021 04:26:24 GMT -->
-<!-- Added by HTTrack -->
+
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
     <title>Adminty - Premium Admin Template by Colorlib </title>
-    <!-- HTML5 Shim and Respond.js IE10 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 10]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-      <![endif]-->
-    <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -32,6 +24,8 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="~/Adminfiles/files/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="~/Adminfiles/files/assets/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
 </head>
 
 <body>
@@ -351,7 +345,7 @@
                             <div class="pcoded-navigatio-lavel">Navigation</div>
                             <ul class="pcoded-item pcoded-left-item">
                                 <li class="pcoded-hasmenu active pcoded-trigger">
-                                    <a href="javascript:void(0)">
+                                    <a asp-controller="dashboard" asp-action="Index">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Dashboard</span>
                                     </a>
@@ -362,66 +356,20 @@
                                             </a>
                                         </li>
                                         <li class="">
-                                            <a href="/">
-                                                <span class="pcoded-mtext">CRM</span>
+                                            <a asp-action="Index" asp-controller="tag">
+                                                <span class="pcoded-mtext">Tags</span>
                                             </a>
                                         </li>
-                                        <li class=" ">
-                                            <a href="default/dashboard-analytics.html">
-                                                <span class="pcoded-mtext">Analytics</span>
-                                                <span class="pcoded-badge label label-info ">NEW</span>
+                                        <li class="">
+                                            <a asp-action="Index" asp-controller="brand">
+                                                <span class="pcoded-mtext">Brands</span>
                                             </a>
                                         </li>
-                                    </ul>
-                                </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                                        <span class="pcoded-mtext">Page layouts</span>
-                                        <span class="pcoded-badge label label-warning">NEW</span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="default/box-layout.html" target="_blank">
-                                                <span class="pcoded-mtext">Box Layout</span>
+                                        <li class="">
+                                            <a asp-action="Index" asp-controller="category">
+                                                <span class="pcoded-mtext">Categories</span>
                                             </a>
                                         </li>
-                                        <li class=" ">
-                                            <a href="default/menu-rtl.html" target="_blank">
-                                                <span class="pcoded-mtext">RTL</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="">
-                                    <a href="default/navbar-light.html">
-                                        <span class="pcoded-micon"><i class="feather icon-menu"></i></span>
-                                        <span class="pcoded-mtext">Navigation</span>
-                                    </a>
-                                </li>
-                                <li class="pcoded-hasmenu">
-                                    <a href="javascript:void(0)">
-                                        <span class="pcoded-micon"><i class="feather icon-layers"></i></span>
-                                        <span class="pcoded-mtext">Widget</span>
-                                        <span class="pcoded-badge label label-danger">100+</span>
-                                    </a>
-                                    <ul class="pcoded-submenu">
-                                        <li class=" ">
-                                            <a href="default/widget-statistic.html">
-                                                <span class="pcoded-mtext">Statistic</span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="default/widget-data.html">
-                                                <span class="pcoded-mtext">Data</span>
-                                            </a>
-                                        </li>
-                                        <li class=" ">
-                                            <a href="default/widget-chart.html">
-                                                <span class="pcoded-mtext">Chart Widget</span>
-                                            </a>
-                                        </li>
-
                                     </ul>
                                 </li>
                             </ul>
@@ -447,47 +395,7 @@
         </div>
     </div>
 
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-    <div class="ie-warning">
-        <h1>Warning!!</h1>
-        <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-        <div class="iew-container">
-            <ul class="iew-download">
-                <li>
-                    <a href="http://www.google.com/chrome/">
-                        <img src="./files/assets/images/browser/chrome.png" alt="Chrome">
-                        <div>Chrome</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.mozilla.org/en-US/firefox/new/">
-                        <img src="./files/assets/images/browser/firefox.png" alt="Firefox">
-                        <div>Firefox</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://www.opera.com">
-                        <img src="./files/assets/images/browser/opera.png" alt="Opera">
-                        <div>Opera</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.apple.com/safari/">
-                        <img src="./files/assets/images/browser/safari.png" alt="Safari">
-                        <div>Safari</div>
-                    </a>
-                </li>
-                <li>
-                    <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                        <img src="./files/assets/images/browser/ie.png" alt="">
-                        <div>IE (9 & above)</div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <p>Sorry for the inconvenience!</p>
+
     </div>
     <![endif]-->
     <!-- Warning Section Ends -->
@@ -513,6 +421,10 @@
     <script src="~/Adminfiles/files/assets/js/vartical-layout.min.js"></script>
     <script type="text/javascript" src="~/Adminfiles/files/assets/pages/dashboard/custom-dashboard.js"></script>
     <script type="text/javascript" src="~/Adminfiles/files/assets/js/script.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="sweetalert2.min.js"></script>
+
+    @RenderSection("custom_js",false)
 </body>
 
 

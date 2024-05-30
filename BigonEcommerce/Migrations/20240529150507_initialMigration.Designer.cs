@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BigonEcommerce.Migrations
 {
     [DbContext(typeof(BigondbContext))]
-    [Migration("20240527122036_initialSubscriber")]
-    partial class initialSubscriber
+    [Migration("20240529150507_initialMigration")]
+    partial class initialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,19 +36,16 @@ namespace BigonEcommerce.Migrations
                     b.Property<int>("BlogCategoryId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CreatedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime");
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("DeletedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -60,11 +57,9 @@ namespace BigonEcommerce.Migrations
                         .HasColumnType("nvarchar");
 
                     b.Property<DateTime?>("ModifiedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -87,7 +82,7 @@ namespace BigonEcommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CreatedBy")
@@ -122,7 +117,7 @@ namespace BigonEcommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CreatedBy")
@@ -157,27 +152,22 @@ namespace BigonEcommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime");
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("DeletedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -203,19 +193,16 @@ namespace BigonEcommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime");
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("DeletedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("HexCode")
@@ -224,11 +211,9 @@ namespace BigonEcommerce.Migrations
                         .HasColumnType("varchar");
 
                     b.Property<DateTime?>("ModifiedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -249,19 +234,16 @@ namespace BigonEcommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
-                        .IsRequired()
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime");
 
                     b.Property<int>("CreatedBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("DeletedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -274,11 +256,9 @@ namespace BigonEcommerce.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime?>("ModifiedAt")
-                        .IsRequired()
                         .HasColumnType("datetime");
 
                     b.Property<int?>("ModifiedBy")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -307,7 +287,7 @@ namespace BigonEcommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CreatedBy")
@@ -368,7 +348,7 @@ namespace BigonEcommerce.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime?>("CreatedAt")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CreatedBy")

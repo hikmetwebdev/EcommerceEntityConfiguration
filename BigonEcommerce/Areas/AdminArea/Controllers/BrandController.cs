@@ -5,29 +5,27 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BigonEcommerce.Areas.AdminArea.Controllers
 {
-    [Area(nameof(AdminArea))]
-
-    public class ColorController : Controller
+    [Area (nameof (AdminArea))]
+    public class BrandController : Controller
     {
 
         private readonly BigondbContext _context;
 
-        public ColorController(BigondbContext context)
+        public BrandController(BigondbContext context)
         {
             _context = context;
         }
 
-        // GET: ColorController
         public IActionResult Index()
         {
-            return View(_context.Colors.Where(x=>x.DeletedBy==null).ToList());
+            return View(_context.Brands.Where(x => x.DeletedBy == null).ToList());
         }
-
         public IActionResult Details(int? id)
         {
-            if (id == null) return NotFound(); 
-            var color=_context.Colors.FirstOrDefault(x=>x.Id == id);
-            return View(color);
+            if (id == null)
+                return NotFound();
+            var brand = _context.Brands.Find(id);
+            return View(brand);
         }
 
         public IActionResult Create()
@@ -37,41 +35,40 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Color color)
+        public IActionResult Create(Brand brand)
         {
             try
             {
-                _context.Colors.Add(color);
+                _context.Brands.Add(brand);
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
             {
-
-                return BadRequest("An error occurred while creating the color: " + ex.Message);
+                return View(ex.Message);
             }
         }
 
-
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
-            var color=_context.Colors.FirstOrDefault(x=>x.Id==id);
-          
-            return View(color);
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var brand = _context.Brands.Find(id);
+
+            return View(brand);
         }
 
-        // POST: ColorController/Edit/5
+        // POST: brandController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Color color)
+        public IActionResult Edit(int id, Brand brand)
         {
-            if (color == null) return NotFound();
-      
             try
             {
-                var editedColor = _context.Colors.Find(color.Id); 
-                editedColor.Name = color.Name;
-                editedColor.HexCode = color.HexCode;
+                var editedbrand = _context.Brands.Find(id);
+                editedbrand.Name = brand.Name;
                 _context.SaveChanges();
                 return RedirectToAction(nameof(Index));
             }
@@ -81,14 +78,18 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
             }
         }
 
-       
+
         [HttpPost]
-        public IActionResult Remove(int id)
+        public IActionResult Remove(int? id)
         {
             try
             {
-                var deletedColor = _context.Colors.FirstOrDefault(color => color.Id == id);
-                if (deletedColor is null)
+                if (id == null)
+                {
+                    return NotFound();
+                }
+                var deletedbrand = _context.Brands.Find(id);
+                if (deletedbrand is null)
                 {
                     return Json(new
                     {
@@ -96,12 +97,12 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
                         message = "Data is not available"
                     });
                 }
-                _context.Remove(deletedColor);
+                _context.Remove(deletedbrand);
                 _context.SaveChanges();
-                return Ok(new
+                return Json(new
                 {
                     error = false,
-                    messaage = "Data has been deleted succesfully"
+                    message = "Data has been deleted succesfully"
                 });
             }
             catch

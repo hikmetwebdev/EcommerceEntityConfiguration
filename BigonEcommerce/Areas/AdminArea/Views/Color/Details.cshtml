@@ -1,0 +1,20 @@
+﻿@model Color
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Color Name</th>
+            <th scope="col">Color's hexCode'</th>
+            <th scope="col">Created time</th>
+            <th scope="col">Created by</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Name</td>
+            <td>@Model.HexCode</td>
+            <td>@Model.CreatedAt</td>
+            <td>@Model.CreatedBy</td>
+        </tr>
+    </tbody>
+</table>
+
