@@ -1,15 +1,15 @@
 using BigonEcommerce.Data.DataAcces;
 using BigonEcommerce.Services.Classes;
 using BigonEcommerce.Services.Interfaces;
+using Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-builder.Services.AddDbContext<BigondbContext>
-    (ops => ops.UseSqlServer(builder.Configuration.GetConnectionString("cString")));
+//builder.Services.InstallDataServices(builder.Configuration);
+DataServiceInjection.InstallDataServices(builder.Services, builder.Configuration);
 
 builder.Services.Configure<EmailOptions>(cfg =>
 {

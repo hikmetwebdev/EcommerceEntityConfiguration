@@ -1,5 +1,5 @@
 ﻿using BigonEcommerce.Models.Persistances.Configurations;
-using Infrastructure.Commons;
+using Infrastructure.Commons.Abstracts;
 using Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 

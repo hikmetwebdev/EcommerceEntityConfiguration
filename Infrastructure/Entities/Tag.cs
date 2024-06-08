@@ -1,4 +1,4 @@
-﻿using Infrastructure.Commons;
+﻿using Infrastructure.Commons.Concrets;
 using System.ComponentModel.DataAnnotations;
 
 namespace Infrastructure.Entities

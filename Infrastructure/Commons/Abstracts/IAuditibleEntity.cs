@@ -1,4 +1,4 @@
-﻿namespace Infrastructure.Commons
+﻿namespace Infrastructure.Commons.Abstracts
 {
     public interface IAuditibleEntity
     {

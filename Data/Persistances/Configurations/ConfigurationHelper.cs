@@ -1,4 +1,4 @@
-﻿using Infrastructure.Commons;
+﻿using Infrastructure.Commons.Concrets;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

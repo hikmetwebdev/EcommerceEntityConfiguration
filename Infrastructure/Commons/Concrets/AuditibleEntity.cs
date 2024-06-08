@@ -1,4 +1,6 @@
-﻿namespace Infrastructure.Commons
+﻿using Infrastructure.Commons.Abstracts;
+
+namespace Infrastructure.Commons.Concrets
 {
     public abstract class AuditibleEntity : IAuditibleEntity
     {

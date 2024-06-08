@@ -1,5 +1,6 @@
 ﻿using BigonEcommerce.Data.DataAcces;
 using Infrastructure.Entities;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,23 +11,24 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
     public class ColorController : Controller
     {
 
-        private readonly BigondbContext _context;
+        private readonly IColorRepository _colorRepository;
 
-        public ColorController(BigondbContext context)
+        public ColorController(IColorRepository colorRepository)
         {
-            _context = context;
+            _colorRepository = colorRepository;
         }
 
         public IActionResult Index()
         {
-            return View(_context.Colors.Where(x=>x.DeletedBy==null).ToList());
+           var colors=_colorRepository.GetAll(c=>c.DeletedBy==null);
+            return View(colors);
         }
 
         public IActionResult Details(int? id)
         {
-            if (id == null) return NotFound(); 
-            var color=_context.Colors.FirstOrDefault(x=>x.Id == id);
-            return View(color);
+            if (id == null) return NotFound();
+            var color = _colorRepository.Get(x => x.Id == id);
+            return View();
         }
 
         public IActionResult Create()
@@ -40,8 +42,10 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
         {
             try
             {
-                _context.Colors.Add(color);
-                _context.SaveChanges();
+                //_context.Colors.Add(color);
+                //_context.SaveChanges();
+                _colorRepository.Add(color);
+                _colorRepository.Save();
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -54,7 +58,7 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
 
         public IActionResult Edit(int id)
         {
-            var color=_context.Colors.FirstOrDefault(x=>x.Id==id);
+            var color = _colorRepository.Get(x=>x.Id==id);
           
             return View(color);
         }
@@ -68,10 +72,7 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
       
             try
             {
-                var editedColor = _context.Colors.Find(color.Id); 
-                editedColor.Name = color.Name;
-                editedColor.HexCode = color.HexCode;
-                _context.SaveChanges();
+                _colorRepository.Edit(color);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -86,7 +87,7 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
         {
             try
             {
-                var deletedColor = _context.Colors.FirstOrDefault(color => color.Id == id);
+                var deletedColor = _colorRepository.Get(x => x.Id == id);
                 if (deletedColor is null)
                 {
                     return Json(new
@@ -95,9 +96,9 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
                         message = "Data is not available"
                     });
                 }
-                _context.Remove(deletedColor);
-                _context.SaveChanges();
-                var colors=_context.Colors.Where(x=>x.DeletedBy==null).ToList();
+                _colorRepository.Remove(deletedColor);
+                _colorRepository.Save();
+                var colors=_colorRepository.GetAll(x=>x.DeletedBy==null);
 
                 return PartialView("_Body", colors);
             }

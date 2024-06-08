@@ -1,5 +1,4 @@
-﻿
-using Infrastructure.Commons;
+﻿using Infrastructure.Commons.Concrets;
 
 namespace Infrastructure.Entities
 {
