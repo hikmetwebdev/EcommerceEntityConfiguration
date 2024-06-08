@@ -1,5 +1,5 @@
-﻿using BigonEcommerce.Models.DataAcces;
-using BigonEcommerce.Models.Entities;
+﻿using BigonEcommerce.Data.DataAcces;
+using Infrastructure.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

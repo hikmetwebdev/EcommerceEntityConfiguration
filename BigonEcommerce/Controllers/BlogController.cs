@@ -6,6 +6,12 @@ namespace BigonEcommerce.Controllers
     {
         public IActionResult Index()
         {
+
+            return View();
+        }
+
+        public IActionResult Detail(int id)
+        {
             return View();
         }
     }

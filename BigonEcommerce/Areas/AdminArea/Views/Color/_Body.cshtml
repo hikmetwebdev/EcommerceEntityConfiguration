@@ -1,0 +1,29 @@
+﻿ @model IEnumerable<Color>
+@{
+    var count = 1;
+}
+@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@count</td>
+            <td>@item.Name</td>
+            <td>
+                <span class="my-color" style="background-color:@item.HexCode"></span>
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-controller="color" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-warning" asp-controller="color" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a onclick="removeColor(@item.Id, '@item.Name')" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        count++;
+    }
+}
+else
+{
+    <tr>
+        <td colspan="3" class="text-warning">No colors available!</td>
+    </tr>
+}

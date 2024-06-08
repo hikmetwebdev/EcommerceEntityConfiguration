@@ -1,11 +1,11 @@
-﻿using BigonEcommerce.Models.DataAcces;
-using BigonEcommerce.Models.Entities;
+﻿using BigonEcommerce.Data.DataAcces;
+using Infrastructure.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BigonEcommerce.Areas.AdminArea.Controllers
 {
-    [Area(nameof(AdminArea))]
+    [Area(nameof(AdminArea))]   
 
     public class ColorController : Controller
     {
@@ -17,7 +17,6 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
             _context = context;
         }
 
-        // GET: ColorController
         public IActionResult Index()
         {
             return View(_context.Colors.Where(x=>x.DeletedBy==null).ToList());
@@ -98,11 +97,9 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
                 }
                 _context.Remove(deletedColor);
                 _context.SaveChanges();
-                return Ok(new
-                {
-                    error = false,
-                    messaage = "Data has been deleted succesfully"
-                });
+                var colors=_context.Colors.Where(x=>x.DeletedBy==null).ToList();
+
+                return PartialView("_Body", colors);
             }
             catch
             {

@@ -1,6 +1,5 @@
 using BigonEcommerce.Models;
-using BigonEcommerce.Models.DataAcces;
-using BigonEcommerce.Models.Entities;
+using Infrastructure.Entities;
 using BigonEcommerce.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +8,7 @@ using System.Globalization;
 using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web;
+using BigonEcommerce.Data.DataAcces;
 
 namespace BigonEcommerce.Controllers
 {
@@ -132,10 +132,6 @@ namespace BigonEcommerce.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+      
     }
 }

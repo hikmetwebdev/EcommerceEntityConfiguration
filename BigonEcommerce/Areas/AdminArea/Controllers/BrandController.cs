@@ -1,15 +1,14 @@
-﻿using BigonEcommerce.Models.DataAcces;
-using BigonEcommerce.Models.Entities;
+﻿using BigonEcommerce.Data.DataAcces;
+using Infrastructure.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
 namespace BigonEcommerce.Areas.AdminArea.Controllers
 {
     [Area (nameof (AdminArea))]
     public class BrandController : Controller
     {
 
-        private readonly BigondbContext _context;
+        private readonly BigondbContext  _context;
 
         public BrandController(BigondbContext context)
         {

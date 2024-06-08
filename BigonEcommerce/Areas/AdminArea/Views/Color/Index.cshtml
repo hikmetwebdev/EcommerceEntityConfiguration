@@ -1,8 +1,5 @@
-﻿@model List<Color>
+﻿@model IEnumerable<Color>
 
-@{
-    var count = 1;
-}
 
 <div class="card">
     <div class="card-header">
@@ -24,32 +21,8 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody>
-                    @if (Model != null && Model.Any())
-                    {
-                        @foreach (var item in Model)
-                        {
-                            <tr>
-                                <td>@count</td>
-                                <td>@item.Name</td>
-                                <td>
-                                    <span class="my-color" style="background-color:@item.HexCode"></span>
-                                </td>
-                                <td>
-                                    <a class="btn btn-primary" asp-controller="color" asp-action="Details" asp-route-id="@item.Id">Details</a>
-                                    <a class="btn btn-warning" asp-controller="color" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                    <a onclick="removeColor(@item.Id, '@item.Name')" class="btn btn-danger">Delete</a>
-                                </td>
-                            </tr>
-                            count++;
-                        }
-                    }
-                    else
-                    {
-                        <tr>
-                            <td colspan="3" class="text-warning">No colors available!</td>
-                        </tr>
-                    }
+                <tbody id="tableId">
+                    <partial name="_Body" model="@Model" />
                 </tbody>
             </table>
         </div>
@@ -69,6 +42,8 @@
 @section custom_js {
     <script>
         function removeColor(id, name) {
+
+            const tableId = $("#tableId");
           Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -91,9 +66,8 @@
                       text: result.message,
                       icon: "success"
                     });
-                    setTimeout(() => {
-                      location.reload();
-                    }, 1500);
+                 
+                      tableId.html(result);
                     return;
                   } else {
                     Swal.fire({

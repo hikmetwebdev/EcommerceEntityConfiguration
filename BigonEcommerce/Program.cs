@@ -1,4 +1,4 @@
-using BigonEcommerce.Models.DataAcces;
+using BigonEcommerce.Data.DataAcces;
 using BigonEcommerce.Services.Classes;
 using BigonEcommerce.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +17,7 @@ builder.Services.Configure<EmailOptions>(cfg =>
 });
 builder.Services.AddSingleton<IEmailService, EmailService>();
 
-
+builder.Services.AddRouting(x=>x.LowercaseUrls=true);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
