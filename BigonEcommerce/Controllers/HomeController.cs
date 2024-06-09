@@ -1,6 +1,5 @@
 using BigonEcommerce.Models;
 using Infrastructure.Entities;
-using BigonEcommerce.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -9,6 +8,7 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web;
 using BigonEcommerce.Data.DataAcces;
+using Infrastructure.Services.Interfaces;
 
 namespace BigonEcommerce.Controllers
 {

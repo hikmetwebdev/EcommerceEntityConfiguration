@@ -1,34 +1,39 @@
 ﻿using BigonEcommerce.Data.DataAcces;
+using Business.Models.ColorsModules.Commands.ColorEditCommand;
+using Business.Models.ColorsModules.Commands.ColorRemoveCommand;
+using Business.Models.ColorsModules.Commands.ColorssAddCommand;
+using Business.Models.ColorsModules.Queries.ColorGet;
+using Business.Models.ColorsModules.Queries.ColorsGetAll;
 using Infrastructure.Entities;
 using Infrastructure.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BigonEcommerce.Areas.AdminArea.Controllers
 {
-    [Area(nameof(AdminArea))]   
+    [Area(nameof(AdminArea))]
 
     public class ColorController : Controller
     {
 
-        private readonly IColorRepository _colorRepository;
+        private readonly IMediator _mediator;
 
-        public ColorController(IColorRepository colorRepository)
+        public ColorController(IMediator mediator)
         {
-            _colorRepository = colorRepository;
+            _mediator = mediator;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(ColorsGetAllRequest request)
         {
-           var colors=_colorRepository.GetAll(c=>c.DeletedBy==null);
-            return View(colors);
+            var response = await _mediator.Send(request);
+            return View(response);
         }
 
-        public IActionResult Details(int? id)
+        public async Task<IActionResult> Details(ColorsGetByIdRequest request)
         {
-            if (id == null) return NotFound();
-            var color = _colorRepository.Get(x => x.Id == id);
-            return View();
+            var response = await _mediator.Send(request);
+            return View(response);
         }
 
         public IActionResult Create()
@@ -37,15 +42,12 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(Color color)
+        public async Task<IActionResult> Create(ColorAddRequest color)
         {
             try
             {
-                //_context.Colors.Add(color);
-                //_context.SaveChanges();
-                _colorRepository.Add(color);
-                _colorRepository.Save();
+                await _mediator.Send(color);
+                
                 return RedirectToAction(nameof(Index));
             }
             catch (Exception ex)
@@ -56,23 +58,20 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
         }
 
 
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(ColorsGetByIdRequest request)
         {
-            var color = _colorRepository.Get(x=>x.Id==id);
-          
-            return View(color);
+            var response = await _mediator.Send(request);
+            return View(response);
         }
 
-        // POST: ColorController/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(Color color)
+        public async Task<IActionResult> Edit(ColorEditRequest request)
         {
-            if (color == null) return NotFound();
-      
+            if (request.Id == null) return NotFound();
+
             try
             {
-                _colorRepository.Edit(color);
+                await _mediator.Send(request);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -81,26 +80,23 @@ namespace BigonEcommerce.Areas.AdminArea.Controllers
             }
         }
 
-       
+
         [HttpPost]
-        public IActionResult Remove(int id)
+        public async Task<IActionResult> Remove(ColorRemoveRequest request)
         {
             try
             {
-                var deletedColor = _colorRepository.Get(x => x.Id == id);
-                if (deletedColor is null)
-                {
-                    return Json(new
-                    {
-                        error = true,
-                        message = "Data is not available"
-                    });
-                }
-                _colorRepository.Remove(deletedColor);
-                _colorRepository.Save();
-                var colors=_colorRepository.GetAll(x=>x.DeletedBy==null);
+                var response = await _mediator.Send(request); 
+                //if (deletedColor is null)
+                //{
+                //    return Json(new
+                //    {
+                //        error = true,
+                //        message = "Data is not available"
+                //    });
+                //}
 
-                return PartialView("_Body", colors);
+                return PartialView("_Body", response);
             }
             catch
             {

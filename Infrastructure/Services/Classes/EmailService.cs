@@ -1,15 +1,15 @@
 ﻿using Microsoft.Extensions.Options;
 using System.Net.Mail;
 using System.Net;
-using BigonEcommerce.Services.Interfaces;
+using Infrastructure.Services.Interfaces;
 
-namespace BigonEcommerce.Services.Classes
+namespace Infrastructure.Services.Classes
 {
     public class EmailService : SmtpClient, IEmailService
     {
         private readonly EmailOptions _options;
 
-     
+
 
         public EmailService(IOptions<EmailOptions> options)
         {
@@ -31,7 +31,7 @@ namespace BigonEcommerce.Services.Classes
                 message.IsBodyHtml = true;
                 message.From = new MailAddress(_options.FromAddress, _options.FromName);
                 message.Body = body;
-                await base.SendMailAsync(message);
+                await SendMailAsync(message);
             }
             catch (Exception)
             {

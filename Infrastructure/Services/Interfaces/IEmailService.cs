@@ -1,4 +1,4 @@
-﻿namespace BigonEcommerce.Services.Interfaces
+﻿namespace Infrastructure.Services.Interfaces
 {
     public interface IEmailService
     {

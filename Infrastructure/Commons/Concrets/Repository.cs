@@ -21,13 +21,15 @@ namespace Infrastructure.Commons.Concrets
         }
         public T Add(T model) 
         {
-
+           _table.Add(model);
+            Save();
             return model;
         }
 
         public T Edit(T model)
         {
-            throw new NotImplementedException();
+          _table.Entry(model).State=EntityState.Modified;
+            return model;
         }
 
         public T Get(Expression<Func<T, bool>> predicate = null)
@@ -52,12 +54,13 @@ namespace Infrastructure.Commons.Concrets
 
         public void Remove(T model)
         {
-            throw new NotImplementedException();
+            _table.Remove(model);
+            Save();
         }
 
         public int Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges();
         }
     }
 }
