@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Services.Interfaces
 {
-    internal interface IFileService
+    public interface IFileService
     {
         Task<string> UploadFileAsync(IFormFile filePath);
 

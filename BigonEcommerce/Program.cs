@@ -25,7 +25,7 @@ builder.Services.Configure<EmailOptions>(cfg =>
 builder.Services.AddSingleton<IEmailService, EmailService>();
 builder.Services.AddSingleton<IDateTimeService, DateTimeService>();
 builder.Services.AddSingleton<IUserServices, UserServices>();
-//builder.Services.AddSingleton<IFileService, FileService>();
+builder.Services.AddSingleton<IFileService, FileService>();
 builder.Services.AddRouting(x=>x.LowercaseUrls=true);
 var app = builder.Build();
 

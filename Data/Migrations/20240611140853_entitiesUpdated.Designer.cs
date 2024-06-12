@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BigonEcommerce.Data.Migrations
+namespace Data.Migrations
 {
     [DbContext(typeof(BigondbContext))]
-    [Migration("20240529150507_initialMigration")]
-    partial class initialMigration
+    [Migration("20240611140853_entitiesUpdated")]
+    partial class entitiesUpdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace BigonEcommerce.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Blog", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Blog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,14 +67,28 @@ namespace BigonEcommerce.Data.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("varchar");
 
+                    b.Property<DateTime>("PublishdeAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("PublishdeBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Slug")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar");
+
                     b.HasKey("Id");
 
                     b.HasIndex("BlogCategoryId");
 
-                    b.ToTable("Blog");
+                    b.HasIndex("Slug")
+                        .IsUnique();
+
+                    b.ToTable("Blogs");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.BlogCategory", b =>
+            modelBuilder.Entity("Infrastructure.Entities.BlogCategory", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -106,10 +120,10 @@ namespace BigonEcommerce.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("BlogCategory");
+                    b.ToTable("BlogCategories");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Brand", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Brand", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -144,7 +158,7 @@ namespace BigonEcommerce.Data.Migrations
                     b.ToTable("Brands");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Category", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -185,7 +199,7 @@ namespace BigonEcommerce.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Color", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Color", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -226,7 +240,7 @@ namespace BigonEcommerce.Data.Migrations
                     b.ToTable("Colors");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Product", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Product", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -279,7 +293,7 @@ namespace BigonEcommerce.Data.Migrations
                     b.ToTable("Products", (string)null);
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Size", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Size", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -320,7 +334,7 @@ namespace BigonEcommerce.Data.Migrations
                     b.ToTable("Size");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Subscriber", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Subscriber", b =>
                 {
                     b.Property<string>("EMailAdress")
                         .HasMaxLength(160)
@@ -340,7 +354,7 @@ namespace BigonEcommerce.Data.Migrations
                     b.ToTable("Subscribers");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Tag", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -366,25 +380,28 @@ namespace BigonEcommerce.Data.Migrations
                     b.Property<int?>("ModifiedBy")
                         .HasColumnType("int");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Tags");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Blog", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Blog", b =>
                 {
-                    b.HasOne("BigonEcommerce.Models.Entities.BlogCategory", "BlogCategory")
+                    b.HasOne("Infrastructure.Entities.BlogCategory", null)
                         .WithMany()
                         .HasForeignKey("BlogCategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
-
-                    b.Navigation("BlogCategory");
                 });
 
-            modelBuilder.Entity("BigonEcommerce.Models.Entities.Category", b =>
+            modelBuilder.Entity("Infrastructure.Entities.Category", b =>
                 {
-                    b.HasOne("BigonEcommerce.Models.Entities.Category", null)
+                    b.HasOne("Infrastructure.Entities.Category", null)
                         .WithMany()
                         .HasForeignKey("ParentCategoryId")
                         .OnDelete(DeleteBehavior.NoAction)

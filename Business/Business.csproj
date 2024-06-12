@@ -14,4 +14,9 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\BlogModules\Commands\" />
+    <Folder Include="Models\BlogModules\Queries\" />
+  </ItemGroup>
+
 </Project>

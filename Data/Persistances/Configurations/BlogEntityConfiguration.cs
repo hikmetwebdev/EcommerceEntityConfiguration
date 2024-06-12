@@ -12,10 +12,17 @@ namespace BigonEcommerce.Data.Persistances.Configurations
             builder.Property(m => m.Name).HasColumnType("varchar").HasMaxLength(20);
             builder.Property(m => m.Description).HasColumnType("nvarchar").HasMaxLength(200);
             builder.Property(m => m.ImageUrl).HasColumnType("nvarchar");
+            builder.Property(m => m.Slug).HasColumnType("nvarchar").HasMaxLength(100);
             builder.HasKey(m => m.Id);
 
             builder.ConfigureAsAudutible();
+            builder.HasOne<BlogCategory>()
+               .WithMany()
+               .HasForeignKey(c => c.BlogCategoryId)
+               .OnDelete(DeleteBehavior.NoAction)
+               .HasPrincipalKey(c => c.Id);
 
+            builder.HasIndex(m => m.Slug).IsUnique();
         }
     }
 }
