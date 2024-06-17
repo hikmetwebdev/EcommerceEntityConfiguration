@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <Folder Include="Models\BlogModules\Commands\" />
-    <Folder Include="Models\BlogModules\Queries\" />
   </ItemGroup>
 
 </Project>

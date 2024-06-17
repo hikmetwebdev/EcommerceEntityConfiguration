@@ -1,11 +1,13 @@
-﻿@model IEnumerable<Blog>
+﻿@using BigonWeb.Business.BlogModules.Queries.BlogGetAll
+
+@model IEnumerable<BlogGetAllDto>
 
 
 <div class="card">
     <div class="card-header">
 
         <h5>Blogs</h5>
-        <a asp-controller="color" asp-action="create" class="btn btn-success">
+        <a asp-controller="blog" asp-action="create" class="btn btn-success">
             Add +
         </a>
 

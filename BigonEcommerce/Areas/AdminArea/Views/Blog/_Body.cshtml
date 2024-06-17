@@ -1,4 +1,4 @@
-﻿ @model IEnumerable<Blog>
+﻿ @model IEnumerable<BlogGetAllDTO>
 @{
     var count = 1;
 }
@@ -13,7 +13,7 @@
             </td>
             <td>@item.Name</td>
             <td>@item.Description</td>
-            <td>@item.BlogCategoryId </td>
+            <td>@item.CategoryName </td>
 
             <td>
                 <span class="my-color" style="background-color:@item.Name"></span>
